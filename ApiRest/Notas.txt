@@ -1,0 +1,1 @@
+Scaffold-DbContext "Data Source=localhost;Initial Catalog=PasarelaPagos;Persist Security Info=True;User ID=PasarelaPagos;Password=PasarelaPagos;MultipleActiveResultSets=True" Microsoft.EntityFrameworkCore.SqlServer -o Modelo/PasarelaPagos -Force 

@@ -24,16 +24,14 @@ namespace ApiRest
         }
 
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(c => { c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin()); });
             services.AddControllers();
             AddSwagger(services);
-            //services.AddDbContext<ApiRest.Modelo.Administration.AdministrationContext>(options =>
-            //    options.UseSqlServer(Configuration.GetConnectionString("PasarelaPagosConnectionString"),
-            //    sqlServerOptions => sqlServerOptions.CommandTimeout(10)));
+            services.AddDbContext<ApiRest.Modelo.PasarelaPagos.PasarelaPagosContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("PasarelaPagosConnectionString"),
+                sqlServerOptions => sqlServerOptions.CommandTimeout(10)));
         }
 
         public void AddSwagger(IServiceCollection services)
