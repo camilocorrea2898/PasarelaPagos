@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ApiRest.Clases.PasarelaPagos
+namespace ApiRest.DAO.Cartera
 {
     public class Cartera
     {
@@ -18,16 +18,16 @@ namespace ApiRest.Clases.PasarelaPagos
             _IdLog = idLog;
         }
 
-        public List<PasarelaPagosDTO.Cartera> TraerCarteras()
+        public List<CarteraDTO.Cartera> TraerCarteras()
         {
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera:");
             try
             {
                 var objReturnTable = _context.Carteras.ToList();
-                List<PasarelaPagosDTO.Cartera> ObjGetData = new();
+                List<CarteraDTO.Cartera> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
-                    PasarelaPagosDTO.Cartera ObjItem = (new PasarelaPagosDTO.Cartera {
+                    CarteraDTO.Cartera ObjItem = (new CarteraDTO.Cartera {
                         IdCartera = Data.IdCartera,
                         IdComercio = Data.IdComercio,
                         IdCliente = Data.IdCliente,
@@ -49,16 +49,16 @@ namespace ApiRest.Clases.PasarelaPagos
             }
         }
 
-        public List<PasarelaPagosDTO.Cartera> TraerCarterasPorIdCartera(int IdCartera)
+        public List<CarteraDTO.Cartera> TraerCarterasPorIdCartera(int IdCartera)
         {
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera por IdCartera:" + IdCartera);
             try
             {
                 var objReturnTable = _context.Carteras.Where(x => x.IdCartera== IdCartera).ToList();
-                List<PasarelaPagosDTO.Cartera> ObjGetData = new();
+                List<CarteraDTO.Cartera> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
-                    PasarelaPagosDTO.Cartera ObjItem = (new PasarelaPagosDTO.Cartera
+                    CarteraDTO.Cartera ObjItem = (new CarteraDTO.Cartera
                     {
                         IdCartera = Data.IdCartera,
                         IdComercio = Data.IdComercio,
@@ -81,16 +81,16 @@ namespace ApiRest.Clases.PasarelaPagos
             }
         }
 
-        public List<PasarelaPagosDTO.Cartera> TraerCarterasPorIdComercio(int IdComercio)
+        public List<CarteraDTO.Cartera> TraerCarterasPorIdComercio(int IdComercio)
         {
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera por IdComercio:" + IdComercio);
             try
             {
                 var objReturnTable = _context.Carteras.Where(x => x.IdComercio == IdComercio).ToList();
-                List<PasarelaPagosDTO.Cartera> ObjGetData = new();
+                List<CarteraDTO.Cartera> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
-                    PasarelaPagosDTO.Cartera ObjItem = (new PasarelaPagosDTO.Cartera
+                    CarteraDTO.Cartera ObjItem = (new CarteraDTO.Cartera
                     {
                         IdCartera = Data.IdCartera,
                         IdComercio = Data.IdComercio,
@@ -113,16 +113,16 @@ namespace ApiRest.Clases.PasarelaPagos
             }
         }
 
-        public List<PasarelaPagosDTO.Cartera> TraerCarterasPorIdCliente(int IdCliente)
+        public List<CarteraDTO.Cartera> TraerCarterasPorIdCliente(int IdCliente)
         {
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera por IdCliente:" + IdCliente);
             try
             {
                 var objReturnTable = _context.Carteras.Where(x => x.IdCliente == IdCliente).ToList();
-                List<PasarelaPagosDTO.Cartera> ObjGetData = new();
+                List<CarteraDTO.Cartera> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
-                    PasarelaPagosDTO.Cartera ObjItem = (new PasarelaPagosDTO.Cartera
+                    CarteraDTO.Cartera ObjItem = (new CarteraDTO.Cartera
                     {
                         IdCartera = Data.IdCartera,
                         IdComercio = Data.IdComercio,
@@ -145,16 +145,16 @@ namespace ApiRest.Clases.PasarelaPagos
             }
         }
 
-        public List<PasarelaPagosDTO.Cartera> TraerCarterasHabilesPorIdCliente(int IdCliente)
+        public List<CarteraDTO.Cartera> TraerCarterasHabilesPorIdCliente(int IdCliente)
         {
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera habiles por IdCliente:" + IdCliente);
             try
             {
                 var objReturnTable = _context.Carteras.Where(x => x.IdCliente == IdCliente && x.FechaFin<DateTime.Now && x.FechaFin>DateTime.Now).ToList();
-                List<PasarelaPagosDTO.Cartera> ObjGetData = new();
+                List<CarteraDTO.Cartera> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
-                    PasarelaPagosDTO.Cartera ObjItem = (new PasarelaPagosDTO.Cartera
+                    CarteraDTO.Cartera ObjItem = (new CarteraDTO.Cartera
                     {
                         IdCartera = Data.IdCartera,
                         IdComercio = Data.IdComercio,
@@ -177,7 +177,7 @@ namespace ApiRest.Clases.PasarelaPagos
             }
         }
 
-        public List<PasarelaPagosDTO.Cartera> TraerCarterasPendientesPorIdCliente(int IdCliente)
+        public List<CarteraDTO.Cartera> TraerCarterasPendientesPorIdCliente(int IdCliente)
         {
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera pendientes por pago por IdCliente:" + IdCliente);
             try
@@ -187,10 +187,10 @@ namespace ApiRest.Clases.PasarelaPagos
                     && x.FechaFin > DateTime.Now
                     )
                     .ToList();
-                List<PasarelaPagosDTO.Cartera> ObjGetData = new();
+                List<CarteraDTO.Cartera> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
-                    PasarelaPagosDTO.Cartera ObjItem = (new PasarelaPagosDTO.Cartera
+                    CarteraDTO.Cartera ObjItem = (new CarteraDTO.Cartera
                     {
                         IdCartera = Data.IdCartera,
                         IdComercio = Data.IdComercio,
@@ -213,7 +213,7 @@ namespace ApiRest.Clases.PasarelaPagos
             }
         }
 
-        public Respuesta InsertarCartera(PasarelaPagosDTO.Cartera ObjInsertar)
+        public Respuesta InsertarCartera(CarteraDTO.Cartera ObjInsertar)
         {
             Respuesta objReturn = new Respuesta();
             try
@@ -261,7 +261,7 @@ namespace ApiRest.Clases.PasarelaPagos
             }
         }
 
-        public Respuesta ActualizarCartera(PasarelaPagosDTO.Cartera ObjActualizar)
+        public Respuesta ActualizarCartera(CarteraDTO.Cartera ObjActualizar)
         {
             Respuesta objReturn = new Respuesta();
             try
@@ -389,7 +389,7 @@ namespace ApiRest.Clases.PasarelaPagos
     }
 }
 
-namespace ApiRest.Clases.PasarelaPagosDTO
+namespace ApiRest.DAO.CarteraDTO
 {
     public class Cartera
     {

@@ -1,4 +1,4 @@
-﻿namespace ApiRest.Clases
+﻿namespace ApiRest.DAO
 {
     public class Respuesta
     {

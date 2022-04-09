@@ -1,5 +1,5 @@
 ﻿using System;
-using ApiRest.Clases;
+using ApiRest.DAO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 

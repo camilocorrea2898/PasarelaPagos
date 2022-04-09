@@ -20,7 +20,7 @@ namespace ApiRest
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            ApiRest.Clases.ConnectionService.SetPasarelaPagosConnectionString(configuration);
+            ApiRest.DAO.ConnectionService.SetPasarelaPagosConnectionString(configuration);
         }
 
         public IConfiguration Configuration { get; }

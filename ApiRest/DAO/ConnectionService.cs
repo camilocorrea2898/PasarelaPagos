@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace ApiRest.Clases
+namespace ApiRest.DAO
 {
     public class ConnectionService
     {
