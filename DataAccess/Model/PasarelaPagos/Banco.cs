@@ -3,17 +3,17 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace ApiRest.Modelo.PasarelaPagos
+namespace DataAccess.Model.PasarelaPagos
 {
-    public partial class Franquicia
+    public partial class Banco
     {
-        public Franquicia()
+        public Banco()
         {
             Transacciones = new HashSet<Transaccione>();
         }
 
-        public int IdFranquicia { get; set; }
-        public string Franquicia1 { get; set; }
+        public int IdBanco { get; set; }
+        public string Banco1 { get; set; }
         public DateTime? FechaCreacion { get; set; }
 
         public virtual ICollection<Transaccione> Transacciones { get; set; }

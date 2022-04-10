@@ -7,6 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PasarelaPagos", "PasarelaPa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ApiRest", "ApiRest\ApiRest.csproj", "{F8E59E4F-4D49-402F-9999-9049F845D7F2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{5EEED6B4-316E-4C0C-907B-30B14E41DB2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,12 +19,17 @@ Global
 		{F8E59E4F-4D49-402F-9999-9049F845D7F2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8E59E4F-4D49-402F-9999-9049F845D7F2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8E59E4F-4D49-402F-9999-9049F845D7F2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5EEED6B4-316E-4C0C-907B-30B14E41DB2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5EEED6B4-316E-4C0C-907B-30B14E41DB2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5EEED6B4-316E-4C0C-907B-30B14E41DB2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5EEED6B4-316E-4C0C-907B-30B14E41DB2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{F8E59E4F-4D49-402F-9999-9049F845D7F2} = {434D19BD-D2E2-4597-B2FC-97FC66565B42}
+		{5EEED6B4-316E-4C0C-907B-30B14E41DB2F} = {434D19BD-D2E2-4597-B2FC-97FC66565B42}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {76B79715-7E39-4B35-9B93-4D5BCC9A23F9}

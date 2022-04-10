@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace ApiRest.Modelo.PasarelaPagos
+namespace DataAccess.Model.PasarelaPagos
 {
     public partial class Comercio
     {

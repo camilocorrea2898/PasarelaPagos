@@ -1,4 +1,4 @@
-﻿namespace ApiRest.DAO
+﻿namespace DataAccess
 {
     public class Respuesta
     {

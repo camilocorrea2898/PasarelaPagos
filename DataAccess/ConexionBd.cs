@@ -1,12 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace ApiRest.DAO
+namespace DataAccess
 {
-    public class ConnectionService
+    public class ConexionBd
     {
         public static string PasarelaPagosConnectionString = "";
         public static string SetPasarelaPagosConnectionString(IConfiguration config)

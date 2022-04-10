@@ -4,30 +4,29 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ApiRest.DAO.Cartera
+namespace DataAccess.Data.PasarelaPagos
 {
     public class Cartera
     {
-        private readonly Modelo.PasarelaPagos.PasarelaPagosContext _context;
+        private readonly Model.PasarelaPagos.PasarelaPagosContext _context;
         private NLog.Logger _logger;
         private string _IdLog;
 
         public Cartera(NLog.Logger logger, string idLog){
-            _context = new Modelo.PasarelaPagos.PasarelaPagosContext();
+            _context = new Model.PasarelaPagos.PasarelaPagosContext();
             _logger = logger;
             _IdLog = idLog;
         }
-
-        public List<CarteraDTO.Cartera> TraerCarteras()
+        public List<CarteraDto> TraerCarteras()
         {
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera:");
             try
             {
                 var objReturnTable = _context.Carteras.ToList();
-                List<CarteraDTO.Cartera> ObjGetData = new();
+                List<CarteraDto> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
-                    CarteraDTO.Cartera ObjItem = (new CarteraDTO.Cartera {
+                    CarteraDto ObjItem = (new CarteraDto {
                         IdCartera = Data.IdCartera,
                         IdComercio = Data.IdComercio,
                         IdCliente = Data.IdCliente,
@@ -48,17 +47,16 @@ namespace ApiRest.DAO.Cartera
                 return null;
             }
         }
-
-        public List<CarteraDTO.Cartera> TraerCarterasPorIdCartera(int IdCartera)
+        public List<CarteraDto> TraerCarterasPorIdCartera(int IdCartera)
         {
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera por IdCartera:" + IdCartera);
             try
             {
                 var objReturnTable = _context.Carteras.Where(x => x.IdCartera== IdCartera).ToList();
-                List<CarteraDTO.Cartera> ObjGetData = new();
+                List<CarteraDto> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
-                    CarteraDTO.Cartera ObjItem = (new CarteraDTO.Cartera
+                    CarteraDto ObjItem = (new CarteraDto
                     {
                         IdCartera = Data.IdCartera,
                         IdComercio = Data.IdComercio,
@@ -80,17 +78,16 @@ namespace ApiRest.DAO.Cartera
                 return null;
             }
         }
-
-        public List<CarteraDTO.Cartera> TraerCarterasPorIdComercio(int IdComercio)
+        public List<CarteraDto> TraerCarterasPorIdComercio(int IdComercio)
         {
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera por IdComercio:" + IdComercio);
             try
             {
                 var objReturnTable = _context.Carteras.Where(x => x.IdComercio == IdComercio).ToList();
-                List<CarteraDTO.Cartera> ObjGetData = new();
+                List<CarteraDto> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
-                    CarteraDTO.Cartera ObjItem = (new CarteraDTO.Cartera
+                    CarteraDto ObjItem = (new CarteraDto
                     {
                         IdCartera = Data.IdCartera,
                         IdComercio = Data.IdComercio,
@@ -112,17 +109,16 @@ namespace ApiRest.DAO.Cartera
                 return null;
             }
         }
-
-        public List<CarteraDTO.Cartera> TraerCarterasPorIdCliente(int IdCliente)
+        public List<CarteraDto> TraerCarterasPorIdCliente(int IdCliente)
         {
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera por IdCliente:" + IdCliente);
             try
             {
                 var objReturnTable = _context.Carteras.Where(x => x.IdCliente == IdCliente).ToList();
-                List<CarteraDTO.Cartera> ObjGetData = new();
+                List<CarteraDto> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
-                    CarteraDTO.Cartera ObjItem = (new CarteraDTO.Cartera
+                    CarteraDto ObjItem = (new CarteraDto
                     {
                         IdCartera = Data.IdCartera,
                         IdComercio = Data.IdComercio,
@@ -144,17 +140,16 @@ namespace ApiRest.DAO.Cartera
                 return null;
             }
         }
-
-        public List<CarteraDTO.Cartera> TraerCarterasHabilesPorIdCliente(int IdCliente)
+        public List<CarteraDto> TraerCarterasHabilesPorIdCliente(int IdCliente)
         {
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera habiles por IdCliente:" + IdCliente);
             try
             {
                 var objReturnTable = _context.Carteras.Where(x => x.IdCliente == IdCliente && x.FechaFin<DateTime.Now && x.FechaFin>DateTime.Now).ToList();
-                List<CarteraDTO.Cartera> ObjGetData = new();
+                List<CarteraDto> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
-                    CarteraDTO.Cartera ObjItem = (new CarteraDTO.Cartera
+                    CarteraDto ObjItem = (new CarteraDto
                     {
                         IdCartera = Data.IdCartera,
                         IdComercio = Data.IdComercio,
@@ -176,8 +171,7 @@ namespace ApiRest.DAO.Cartera
                 return null;
             }
         }
-
-        public List<CarteraDTO.Cartera> TraerCarterasPendientesPorIdCliente(int IdCliente)
+        public List<CarteraDto> TraerCarterasPendientesPorIdCliente(int IdCliente)
         {
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera pendientes por pago por IdCliente:" + IdCliente);
             try
@@ -187,10 +181,10 @@ namespace ApiRest.DAO.Cartera
                     && x.FechaFin > DateTime.Now
                     )
                     .ToList();
-                List<CarteraDTO.Cartera> ObjGetData = new();
+                List<CarteraDto> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
-                    CarteraDTO.Cartera ObjItem = (new CarteraDTO.Cartera
+                    CarteraDto ObjItem = (new CarteraDto
                     {
                         IdCartera = Data.IdCartera,
                         IdComercio = Data.IdComercio,
@@ -212,8 +206,7 @@ namespace ApiRest.DAO.Cartera
                 return null;
             }
         }
-
-        public Respuesta InsertarCartera(CarteraDTO.Cartera ObjInsertar)
+        public Respuesta InsertarCartera(CarteraDto ObjInsertar)
         {
             Respuesta objReturn = new Respuesta();
             try
@@ -224,7 +217,7 @@ namespace ApiRest.DAO.Cartera
                 _logger.Debug(_IdLog + "Se va a insertar datos en la tabla Cartera: " + objRequestLog);
                 try
                 {
-                    var ObjCartera = new Modelo.PasarelaPagos.Cartera()
+                    var ObjCartera = new Model.PasarelaPagos.Cartera()
                     {
                         IdComercio = ObjInsertar.IdComercio,
                         IdCliente = ObjInsertar.IdCliente,
@@ -260,8 +253,7 @@ namespace ApiRest.DAO.Cartera
                 return objReturn.SeleccionarRespuesta(99);
             }
         }
-
-        public Respuesta ActualizarCartera(CarteraDTO.Cartera ObjActualizar)
+        public Respuesta ActualizarCartera(CarteraDto ObjActualizar)
         {
             Respuesta objReturn = new Respuesta();
             try
@@ -279,7 +271,7 @@ namespace ApiRest.DAO.Cartera
 
                         _logger.Debug(_IdLog + "DATOS ANTERIORES" + Environment.NewLine + JsonCarteraBd);
 
-                        ObjCarteraBd = (new Modelo.PasarelaPagos.Cartera
+                        ObjCarteraBd = (new Model.PasarelaPagos.Cartera
                         {
                             IdComercio = (ObjActualizar.IdComercio>0 && ObjActualizar.IdComercio != ObjCarteraBd.IdComercio) ? ObjActualizar.IdComercio : ObjCarteraBd.IdComercio,
                             IdCliente = (ObjActualizar.IdCliente > 0 && ObjActualizar.IdCliente != ObjCarteraBd.IdCliente) ? ObjActualizar.IdCliente : ObjCarteraBd.IdCliente,
@@ -335,7 +327,6 @@ namespace ApiRest.DAO.Cartera
                 return objReturn.SeleccionarRespuesta(99);
             }
         }
-
         public Respuesta EliminarCartera(int IdCartera)
         {
             Respuesta objReturn = new Respuesta();
@@ -389,9 +380,9 @@ namespace ApiRest.DAO.Cartera
     }
 }
 
-namespace ApiRest.DAO.CarteraDTO
+namespace DataAccess.Data.PasarelaPagos
 {
-    public class Cartera
+    public class CarteraDto
     {
         public int IdCartera { get; set; }
         public int? IdComercio { get; set; }

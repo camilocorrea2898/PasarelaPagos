@@ -3,10 +3,15 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace ApiRest.Modelo.PasarelaPagos
+namespace DataAccess.Model.PasarelaPagos
 {
-    public partial class VistaCarterasPendientesPorPago
+    public partial class Cartera
     {
+        public Cartera()
+        {
+            Transacciones = new HashSet<Transaccione>();
+        }
+
         public int IdCartera { get; set; }
         public int? IdComercio { get; set; }
         public int? IdCliente { get; set; }
@@ -15,5 +20,9 @@ namespace ApiRest.Modelo.PasarelaPagos
         public DateTime? FechaFin { get; set; }
         public decimal? Valor { get; set; }
         public DateTime? FechaCreacion { get; set; }
+
+        public virtual Cliente IdClienteNavigation { get; set; }
+        public virtual Comercio IdComercioNavigation { get; set; }
+        public virtual ICollection<Transaccione> Transacciones { get; set; }
     }
 }

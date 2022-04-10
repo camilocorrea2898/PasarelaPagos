@@ -1,11 +1,10 @@
 ﻿using System;
-using ApiRest.DAO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace ApiRest.Modelo.PasarelaPagos
+namespace DataAccess.Model.PasarelaPagos
 {
     public partial class PasarelaPagosContext : DbContext
     {
@@ -30,7 +29,7 @@ namespace ApiRest.Modelo.PasarelaPagos
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(ConnectionService.PasarelaPagosConnectionString);
+            optionsBuilder.UseSqlServer(ConexionBd.PasarelaPagosConnectionString);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

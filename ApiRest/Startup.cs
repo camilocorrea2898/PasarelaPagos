@@ -7,11 +7,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace ApiRest
 {
@@ -20,7 +18,7 @@ namespace ApiRest
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            ApiRest.DAO.ConnectionService.SetPasarelaPagosConnectionString(configuration);
+            DataAccess.ConexionBd.SetPasarelaPagosConnectionString(configuration);
         }
 
         public IConfiguration Configuration { get; }
@@ -29,9 +27,6 @@ namespace ApiRest
             services.AddCors(c => { c.AddPolicy("AllowOrigin", options => options.AllowAnyOrigin()); });
             services.AddControllers();
             AddSwagger(services);
-            services.AddDbContext<ApiRest.Modelo.PasarelaPagos.PasarelaPagosContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("PasarelaPagosConnectionString"),
-                sqlServerOptions => sqlServerOptions.CommandTimeout(10)));
         }
 
         public void AddSwagger(IServiceCollection services)
@@ -54,15 +49,12 @@ namespace ApiRest
 
                     }
                 });
-
-                // Set the comments path for the Swagger JSON and UI.
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 options.IncludeXmlComments(xmlPath);
             });
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(x => x
