@@ -1,0 +1,12 @@
+In the Name field, enter SONAR_TOKEN 
+In the Value field, enter 58d7f227b540f443ebf8b2378b6e33b788b58d12
+
+SONAR_TOKEN
+6f60529a7263e088634b9fceaddf0e9667e3b370
+
+GITHUB_TOKEN
+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
+
+dotnet build ApiRest\ApiRest.csproj --configuration Release;
+dotnet build DataAccess\DataAccess.csproj --configuration Release;          
+
