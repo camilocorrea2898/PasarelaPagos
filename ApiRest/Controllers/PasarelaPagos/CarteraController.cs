@@ -9,7 +9,7 @@ namespace ApiRest.Controllers.PasarelaPagos.Cartera
     [ApiController]
     public class CarteraController : ControllerBase
     {
-        private NLog.Logger _logger;
+        private readonly NLog.Logger _logger;
         private readonly string _IdLog;
         private DataAccess.Data.PasarelaPagos.Cartera ObjMetodo;
         private List<CarteraDto> ObjRespuestaList;

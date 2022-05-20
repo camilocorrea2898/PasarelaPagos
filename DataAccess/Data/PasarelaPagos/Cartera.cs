@@ -9,8 +9,8 @@ namespace DataAccess.Data.PasarelaPagos
     public class Cartera
     {
         private readonly Model.PasarelaPagos.PasarelaPagosContext _context;
-        private NLog.Logger _logger;
-        private string _IdLog;
+        private readonly NLog.Logger _logger;
+        private readonly string _IdLog;
 
         public Cartera(NLog.Logger logger, string idLog){
             _context = new Model.PasarelaPagos.PasarelaPagosContext();
