@@ -19,11 +19,11 @@ namespace DataAccess.Data.PasarelaPagos
         }
         public List<CarteraDto> TraerCarteras()
         {
+            List<CarteraDto> ObjGetData = new();
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera:");
             try
             {
                 var objReturnTable = _context.Carteras.ToList();
-                List<CarteraDto> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
                     CarteraDto ObjItem = (new CarteraDto {
@@ -39,21 +39,21 @@ namespace DataAccess.Data.PasarelaPagos
 
                     ObjGetData.Add(ObjItem);
                 }
-                return ObjGetData;
+                
             }
             catch (Exception ex)
             {
                 _logger.Debug(_IdLog + "TraerCarteras Exception " + ex.Message);
-                return null;
             }
+            return ObjGetData;
         }
         public List<CarteraDto> TraerCarterasPorIdCartera(int IdCartera)
         {
+            List<CarteraDto> ObjGetData = new();
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera por IdCartera:" + IdCartera);
             try
             {
                 var objReturnTable = _context.Carteras.Where(x => x.IdCartera== IdCartera).ToList();
-                List<CarteraDto> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
                     CarteraDto ObjItem = (new CarteraDto
@@ -70,21 +70,21 @@ namespace DataAccess.Data.PasarelaPagos
 
                     ObjGetData.Add(ObjItem);
                 }
-                return ObjGetData;
+                
             }
             catch (Exception ex)
             {
                 _logger.Debug(_IdLog + "TraerCarterasPorIdCartera Exception " + ex.Message);
-                return null;
             }
+            return ObjGetData;
         }
         public List<CarteraDto> TraerCarterasPorIdComercio(int IdComercio)
         {
+            List<CarteraDto> ObjGetData = new();
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera por IdComercio:" + IdComercio);
             try
             {
                 var objReturnTable = _context.Carteras.Where(x => x.IdComercio == IdComercio).ToList();
-                List<CarteraDto> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
                     CarteraDto ObjItem = (new CarteraDto
@@ -101,21 +101,20 @@ namespace DataAccess.Data.PasarelaPagos
 
                     ObjGetData.Add(ObjItem);
                 }
-                return ObjGetData;
             }
             catch (Exception ex)
             {
                 _logger.Debug(_IdLog + "TraerCarterasPorIdComercio Exception " + ex.Message);
-                return null;
             }
+            return ObjGetData;
         }
         public List<CarteraDto> TraerCarterasPorIdCliente(int IdCliente)
         {
+            List<CarteraDto> ObjGetData = new();
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera por IdCliente:" + IdCliente);
             try
             {
                 var objReturnTable = _context.Carteras.Where(x => x.IdCliente == IdCliente).ToList();
-                List<CarteraDto> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
                     CarteraDto ObjItem = (new CarteraDto
@@ -132,21 +131,21 @@ namespace DataAccess.Data.PasarelaPagos
 
                     ObjGetData.Add(ObjItem);
                 }
-                return ObjGetData;
+                
             }
             catch (Exception ex)
             {
                 _logger.Debug(_IdLog + "TraerCarterasPorIdCliente Exception " + ex.Message);
-                return null;
             }
+            return ObjGetData;
         }
         public List<CarteraDto> TraerCarterasHabilesPorIdCliente(int IdCliente)
         {
+            List<CarteraDto> ObjGetData = new();
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera habiles por IdCliente:" + IdCliente);
             try
             {
                 var objReturnTable = _context.Carteras.Where(x => x.IdCliente == IdCliente && x.FechaFin<DateTime.Now && x.FechaFin>DateTime.Now).ToList();
-                List<CarteraDto> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
                     CarteraDto ObjItem = (new CarteraDto
@@ -163,16 +162,16 @@ namespace DataAccess.Data.PasarelaPagos
 
                     ObjGetData.Add(ObjItem);
                 }
-                return ObjGetData;
             }
             catch (Exception ex)
             {
                 _logger.Debug(_IdLog + "TraerCarterasHabilesPorIdCliente Exception " + ex.Message);
-                return null;
             }
+            return ObjGetData;
         }
         public List<CarteraDto> TraerCarterasPendientesPorIdCliente(int IdCliente)
         {
+            List<CarteraDto> ObjGetData = new();
             _logger.Debug(_IdLog + "Se van a obtener todos datos en la tabla Cartera pendientes por pago por IdCliente:" + IdCliente);
             try
             {
@@ -181,7 +180,6 @@ namespace DataAccess.Data.PasarelaPagos
                     && x.FechaFin > DateTime.Now
                     )
                     .ToList();
-                List<CarteraDto> ObjGetData = new();
                 foreach (var Data in objReturnTable)
                 {
                     CarteraDto ObjItem = (new CarteraDto
@@ -198,13 +196,12 @@ namespace DataAccess.Data.PasarelaPagos
 
                     ObjGetData.Add(ObjItem);
                 }
-                return ObjGetData;
             }
             catch (Exception ex)
             {
                 _logger.Debug(_IdLog + "TraerCarterasHabilesPorIdCliente Exception " + ex.Message);
-                return null;
             }
+            return ObjGetData;
         }
         public Respuesta InsertarCartera(CarteraDto ObjInsertar)
         {

@@ -11,7 +11,7 @@ namespace ApiRest.Controllers.PasarelaPagos.Cartera
     {
         private readonly NLog.Logger _logger;
         private readonly string _IdLog;
-        private DataAccess.Data.PasarelaPagos.Cartera ObjMetodo;
+        private readonly DataAccess.Data.PasarelaPagos.Cartera ObjMetodo;
         private List<CarteraDto> ObjRespuestaList;
         private DataAccess.Respuesta ObjRespuestaDML;
         public CarteraController()
